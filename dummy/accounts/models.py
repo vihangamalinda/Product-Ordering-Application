@@ -37,8 +37,6 @@ class Product(models.Model):
         return self.name
 
 
-
-
 class Order(models.Model):
     STATUS = (
         ("Pending", "Pending"),
@@ -49,3 +47,6 @@ class Order(models.Model):
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     date_created = models.DateField(auto_now_add=True, null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+
+    def __str__(self):
+        return self.product.name
